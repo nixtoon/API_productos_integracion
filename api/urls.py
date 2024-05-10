@@ -7,4 +7,6 @@ urlpatterns = [
   path('read/<str:pk>', views.getProducto),
   path('update/<str:pk>', views.updateProducto),
   path('delete/<str:pk>', views.deleteProducto),
+  path('get-marcas', views.getMarcas),
+  path('add-marcas', views.addMarca)
 ]

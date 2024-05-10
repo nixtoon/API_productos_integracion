@@ -11,7 +11,7 @@ class Marca(models.Model):
 
 class Producto(models.Model):
   nombre = models.CharField(max_length=50)
-  precio = models.IntegerField(max_length=8)
+  precio = models.IntegerField()
   marca = models.ForeignKey(Marca, on_delete = models.PROTECT)
 
   def __str__(self):

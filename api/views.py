@@ -5,6 +5,8 @@ from .models import Marca, Producto
 
 # Create your views here.
 
+# views de productos
+
 # get all products
 @api_view(['GET']) 
 def getProductos(request):
@@ -47,3 +49,23 @@ def deleteProducto(request, pk):
   producto.delete()
 
   return Response('Item eliminado')
+
+
+# views de marca
+
+# get all marcas
+@api_view(['GET']) 
+def getMarcas(request):
+  marcas = Marca.objects.all()
+  serializer = MarcaSerializer(marcas, many=True)
+  return Response(serializer.data)
+
+# add marca
+@api_view(['POST'])
+def addMarca(request):
+  serializer = MarcaSerializer(data=request.data)
+
+  if serializer.is_valid():
+    serializer.save()
+  
+  return Response(serializer.data)

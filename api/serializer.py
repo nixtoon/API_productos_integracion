@@ -8,7 +8,10 @@ class MarcaSerializer(serializers.ModelSerializer):
     fields = '__all__'
 
 class ProductoSerializer(serializers.ModelSerializer):
-  class Meta:
-    model = Producto
-    fields = '__all__'
+    # Define un campo para representar la marca asociada
+    marca = MarcaSerializer(read_only=True)  # Usa read_only=True para campos relacionales anidados
+
+    class Meta:
+        model = Producto
+        fields = ['id', 'nombre', 'precio', 'marca']
 
